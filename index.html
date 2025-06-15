@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANARCHISM</title>
-    <script src="https://telegram.org/js/games.js"></script>
+    <title>Red Web App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             background-color: #000;
-            color: #ff0000;
+            color: #FF0000; 
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -32,11 +32,17 @@
 <body>
     <h1>ANARCHY IS ORDER!</h1>
     <h2>This is a new nft project dedicated to new anarchism, click on the logo to go to the our telegram channel</h2>
-    <img id="gameImage" src="anarchy.jpg" alt="Переход в канал" width="300">
+    <img id="channelImage" src="anarchy,jpg" alt="PUNKS NOT DEAD", width="300">
 
     <script>
-        document.getElementById('gameImage').addEventListener('click', function() {
-            TelegramGameProxy.openTelegramLink('https://t.me/anarchyisorder');
+        const webApp = Telegram.WebApp;
+        document.getElementById('channelImage').addEventListener('click', function() {
+            webApp.openLink('https://t.me/anarchyisorder', { try_instant_view: false });
+            webApp.openTelegramLink('https://t.me/anarchyisorder');
+        });
+        webApp.MainButton.setText('CLOSE').show();
+        webApp.MainButton.onClick(function() {
+            webApp.close();
         });
     </script>
 </body>
