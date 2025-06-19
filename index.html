@@ -18,10 +18,37 @@
             overflow: hidden;
         }
 
+        .header-container {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+
         .header-image {
             width: 100%;
             height: 30vh;
             object-fit: cover;
+            cursor: pointer;
+        }
+
+        .channel-link {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            text-shadow: 0 0 3px black;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
         }
 
         .container {
@@ -173,7 +200,10 @@
     </style>
 </head>
 <body>
-    <img src="anarchy.jpg" alt="Header" class="header-image">
+    <div class="header-container">
+        <img src="anarchy.jpg" alt="Header" class="header-image" id="headerImage">
+        <div class="channel-link">CLICK ON THE LOGO TO JOIN OUR TELEGRAM CHANNEL</div>
+    </div>
     
     <div class="container">
         <button class="action-button" id="mainButton">
@@ -187,8 +217,8 @@
     
     <div class="modal" id="infoModal">
         <div class="modal-content">
-            <h3>Important Information</h3>
-            <p>This is the detailed description that appears when you click the button. You can put any important information here for the user.</p>
+            <h3>The Great beginning</h3>
+            <p>This small step will be the beginning of the great spread of anarchism for the foundation of the free blockchain.</p>
             <button id="confirmButton">CONFIRM</button>
         </div>
     </div>
@@ -201,6 +231,7 @@
     <script>
         // DOM Elements
         const mainButton = document.getElementById('mainButton');
+        const headerImage = document.getElementById('headerImage');
         const infoModal = document.getElementById('infoModal');
         const confirmButton = document.getElementById('confirmButton');
         const checkmarkContainer = document.getElementById('checkmarkContainer');
@@ -220,6 +251,9 @@
         // Cloud Storage Keys
         const STORAGE_KEY = 'button_confirmed';
         const USER_ID_KEY = 'user_id';
+
+        // Telegram channel URL (REPLACE WITH YOUR ACTUAL CHANNEL LINK)
+        const TELEGRAM_CHANNEL_URL = "https://t.me/anarchyisorder";
 
         // Load user data
         const initData = tg.initDataUnsafe;
@@ -285,6 +319,11 @@
         mainButton.addEventListener('click', () => {
             if (isAnimating) return;
             infoModal.classList.add('visible');
+        });
+
+        // Header image click handler - open Telegram channel
+        headerImage.addEventListener('click', () => {
+            window.open(TELEGRAM_CHANNEL_URL, '_blank');
         });
 
         // Confirm/Close button handler
