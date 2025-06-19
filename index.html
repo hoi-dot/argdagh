@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anarchy App</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js">
+        async 
+        src="https://tganalytics.xyz/index.js" 
+        onload="initAnalytics()" 
+        type="text/javascript"
+        function initAnalytics() {
+          window.telegramAnalytics.init({
+            token: 'eyJhcHBfbmFtZSI6IkFuYXJjaHlfaXNfb3JkZXIiLCJhcHBfdXJsIjoiaHR0cHM6Ly90Lm1lL2FuYXJjaHlpc29yZGVyX2JvdCIsImFwcF9kb21haW4iOiJodHRwczovL2hvaS1kb3QuZ2l0aHViLmlvL2FyZ2RhZ2gvIn0=!o5wbUvudDcn4n2GiIMddvqHlfN2Bz+3KLG3atKf2H4c=', // SDK Auth token received via @DataChief_bot
+            appName: 'Anarchy_is_order', // The analytics identifier you entered in @DataChief_bot
+          });
+        }
+    </script>
     <style>
         body {
             margin: 0;
