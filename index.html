@@ -22,6 +22,8 @@
             position: relative;
             width: 100%;
             text-align: center;
+            display: flex;
+            flex-direction: column;
         }
 
         .header-image {
@@ -32,10 +34,8 @@
         }
 
         .channel-link {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
+            /* Перемещено вниз контейнера */
+            padding: 10px 0;
             text-align: center;
             color: red;
             font-weight: bold;
@@ -43,6 +43,7 @@
             font-size: 16px;
             text-shadow: 0 0 3px black;
             animation: blink 2s infinite;
+            background: rgba(0, 0, 0, 0.7);
         }
 
         @keyframes blink {
@@ -193,6 +194,7 @@
             opacity: 0.5;
         }
 
+        /* Уменьшена длительность анимации с 7s до 4s */
         @keyframes borderPulse {
             0% { border-color: white; }
             100% { border-color: lime; }
@@ -252,7 +254,7 @@
         const STORAGE_KEY = 'button_confirmed';
         const USER_ID_KEY = 'user_id';
 
-        // Telegram channel URL (REPLACE WITH YOUR ACTUAL CHANNEL LINK)
+        // Telegram channel URL
         const TELEGRAM_CHANNEL_URL = "https://t.me/anarchyisorder";
 
         // Load user data
@@ -344,10 +346,8 @@
                 // Save state to Telegram Cloud
                 saveState();
                 
-                // Start border color transition (7 seconds)
-                mainButton.style.animation = 'borderPulse 7s forwards';
+                mainButton.style.animation = 'borderPulse 4s forwards';
                 
-                // Show checkmark after 7 seconds
                 setTimeout(() => {
                     checkmarkContainer.style.opacity = '1';
                     
@@ -365,7 +365,7 @@
                             confirmButton.disabled = false;
                         }, 300);
                     }, 1000);
-                }, 7000);
+                }, 4000); 
             } else {
                 // Subsequent clicks - just close the modal
                 infoModal.classList.remove('visible');
